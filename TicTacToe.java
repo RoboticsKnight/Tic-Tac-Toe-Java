@@ -29,17 +29,34 @@ public class TicTacToe{
             System.out.println("Enter your placement (1-9): ");
             int playerPos = posObj.nextInt();   
 
+            // Checking if the player has chosen a free space, if not they are asked to choose a new space until a valid space is chosen
+            while(playerPositions.contains(playerPos) || cpuPositions.contains(playerPos)){
+
+                System.out.println("Position taken! Enter a valid position (1-9): ");
+                playerPos = posObj.nextInt();
+
+            }
+
             //System.out.println(playerPos);
 
             placePiece(gameBoard, playerPos, "player");
 
             Random rand = new Random();
             int cpuPos = rand.nextInt(9) + 1;
+
+            // Checking if the CPU has chosen a free space, if not it is made to generate a new number until a valid space is chosen
+            while(playerPositions.contains(cpuPos) || cpuPositions.contains(cpuPos)){
+
+                cpuPos = rand.nextInt(9) + 1;
+
+            }
+
             placePiece(gameBoard, cpuPos, "cpu");
 
             printGameBoard(gameBoard);
 
             String result = checkWinner();
+
             System.out.println(result);
         }
 
@@ -164,7 +181,7 @@ public class TicTacToe{
             }
             else if(playerPositions.size() + cpuPositions.size() == 9){
 
-
+                return "It is a tie!";
 
             }
 
