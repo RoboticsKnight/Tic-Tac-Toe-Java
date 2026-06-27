@@ -9,19 +9,27 @@ public class TicTacToe{
         {'-', '+', '-', '+', '-'},
         {' ', '|', ' ', '|', ' '}};
 
+        
+        printGameBoard(gameBoard);
+
+        }
+
+
         // ============================================================
         // Board display
         // ============================================================
-        for(char[] r: gameBoard){
+        public static void printGameBoard(char[][] gameBoard){
 
-            for(char c: r){
+        
+            for(char[] r: gameBoard){
 
-                System.out.print(c);
+                for(char c: r){
 
-            }
-            
-            System.out.println();
+                    System.out.print(c);
 
+                }
+                
+                System.out.println();
 
         }
 
